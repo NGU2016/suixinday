@@ -18,12 +18,14 @@
                 <div class="about">
                     <h2>关于{{item.name}}</h2>
                     <Rate disabled  show-text v-model="item.des.core" style="margin-bottom:10px;">
-                        <span style="color: #f5a623">{{ item.des.core }}分</span>
+                        <span style="color: #f5a623">{{ item.des.core}}分</span>
                     </Rate>
-                    <router-link :to="{ name: 'strategy', params: {id:item.name,type:'commenf'}}" style="display:-webkit-inline-box">
-                        <Icon type="android-textsms" :size=20 style="margin-left:40px;">
-                        </Icon>
-                        <p style="margin-left:5px;">7399条热门评论</p>
+                    <router-link :to="{ name: 'strategy', params: {id:item.name,type:'comment'}}" >
+                        <div style="display:-webkit-inline-box" @click="getStrategyData(item.alis)">
+                            <Icon type="android-textsms" :size=20 style="margin-left:40px;">
+                            </Icon>
+                            <p style="margin-left:5px;">7399条热门评论</p>
+                        </div>
                     </router-link>
                     <div>
                         <h3>大家印象:</h3>
@@ -85,7 +87,7 @@ export default {
         }
      },
     watch:{
-      $route (to,from){
+      '$route' (to,from){
         }
     },
     computed:{
@@ -121,6 +123,15 @@ export default {
                 return false;
             }
         } */
+        ,
+        getStrategyData (type){
+            const me=this;
+            this.$axios.get("/static/data/"+type+".json").then(response=>{
+                me.$store.dispatch("setCurrentStrategy",response.data)
+            },response=>{
+
+            })
+        }
     },
     mounted (){
     },

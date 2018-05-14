@@ -1,5 +1,6 @@
 [        {
             "name":"故宫",
+            "alis" :"gugong",
             "img":[
                 "1-gugong-1.jpg",
                 "1-gugong-2.jpg",
@@ -51,7 +52,8 @@
             }
     },
     {
-        "name":"故宫2",
+        "name":"长城",
+        "alis" :"changcheng",
         "img":[
             "1-gugong-1.jpg",
             "1-gugong-2.jpg",
@@ -103,7 +105,8 @@
         }
     },
     {
-        "name":"故宫3",
+        "name":"天安门",
+        "alis" :"tiananmen",
         "img":[
             "1-gugong-1.jpg",
             "1-gugong-2.jpg",
@@ -155,7 +158,8 @@
         }
     },
     {
-        "name":"故宫4",
+        "name":"鸟巢",
+        "alis" :"niaochao",
         "img":[
             "1-gugong-1.jpg",
             "1-gugong-2.jpg",

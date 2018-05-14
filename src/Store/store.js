@@ -8,7 +8,7 @@ const state ={
     currentUser:'',
     currentState:'2',//右上角标签选中的状态,
     currentCityInfo:{},//某个城市的景点合集
-    currentStrategy:{}//城市的具体某个景点的具体游玩攻略数据
+    currentStrategy:{}//城市的具体某个景点的具体游玩攻略和评论数据
 }
 
 const mutations={
@@ -20,6 +20,9 @@ const mutations={
     },
     setCurrentCityInfo (state,data){ //点击城市排行的时候更行城市景点信息
         state.currentCityInfo=data;
+    },
+    setCurrentStrategy (state,data){ //城市的具体某个景点的具体游玩攻略和评论数据
+        state.currentStrategy = data;
     }
 }
 
