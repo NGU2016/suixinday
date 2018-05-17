@@ -55,6 +55,7 @@ export default {
             })
         }
     },
+    //获取左边热门景点
     mounted (){
         const me=this;
         this.$axios.get("/static/data/hotCity.json").then(response=>{

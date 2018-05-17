@@ -4,7 +4,8 @@ import axios from 'axios'
 Vue.use(Vuex);
 
 const state ={
-    hotCity:{},
+    hotCity:{},//当前热门城市的数据
+    hotCityName:"",//当前热门城市的名称
     currentUser:'',
     currentState:'2',//右上角标签选中的状态,
     currentCityInfo:{},//某个城市的景点合集
@@ -15,6 +16,9 @@ const state ={
 const mutations={
     initHotCity (state,data){
         state.hotCity=data;
+    },
+    initHotCityName (state,data){
+        state.hotCityName = data
     },
     setCurrentSate (state,data){
         state.currentState=data;
@@ -39,6 +43,9 @@ const actions ={
     },
     actionSetCurrentUser (context,data){
         context.commit('setCurrentUser',data)
+    },
+    actionHotCityName (context,data){
+        context.commit('initHotCityName',data)
     }
 }
 export default new Vuex.Store({

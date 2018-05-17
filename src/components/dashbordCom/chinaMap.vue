@@ -168,6 +168,16 @@ export default {
                     ]
       }
   },
+  methods :{
+      getMapCity (name) {  //点击地图，获取当前点击的地点的热点景区排行
+            this.$axios.get("/static/data/hotCity.json").then(response=>{
+                this.$store.dispatch("actionHotCityName",name)
+                this.$store.dispatch("actionsHostCity",response.data)
+            },response=>{
+
+            }) 
+      }
+  },
   mounted (){
     let chinaMap = echarts.init(document.getElementById('china-map'));
 
@@ -213,17 +223,11 @@ export default {
                     bottom: 30,
                     left: 'left',
                 },
-                grid: {
-                    right: 10,
-                    top: 80,
-                    bottom: 30,
-                    width: '20%'
-                },
                 geo: {
-                    roam: true,
+                    roam: true,//支持拖动
                     map: 'china',
                     left: 'left',
-                    right:'300',
+                    right:'350',
                     layoutSize: '80%',
                     label: {
                         normal: {
@@ -245,7 +249,7 @@ export default {
                 series: [{
                     name: 'mapSer',
                     type: 'map',
-                    roam: false,
+                    roam: true,
                     geoIndex: 0,
                     label: {
                         show: false,
@@ -254,8 +258,9 @@ export default {
                 }]
             };
         chinaMap.setOption(option);
+        var me=this;
         chinaMap.on('click',function(params){
-            console.log(params.name)
+            me.getMapCity(params.name)
         })
   }
 }

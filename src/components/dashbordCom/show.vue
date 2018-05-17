@@ -1,7 +1,7 @@
 <template>
   <div class="showMessage" id="showMessage">
       <div class="suixin1">
-        <span class="fontStyle">热门景点排行</span>
+        <span class="fontStyle">{{hotCidtyName}}热门景点排行</span>
       </div>
       <topScenics></topScenics>
   </div>
@@ -13,6 +13,11 @@ export default {
     name :"ahowMessage",
     components:{
         topScenics
+    },
+    computed :{
+        hotCidtyName (){
+            return this.$store.state.hotCityName
+        }
     }
 }
 </script>
