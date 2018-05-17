@@ -6,7 +6,9 @@
                 <Menu mode="horizontal" theme="dark" ref="selectState" :active-name="1"  :name="getCurrentState">
                     <router-link to="/">
                         <div class="layout-logo">
-
+                            <div class="layout-logos">
+                                    <span style="font-style:oblique;font-size:x-large;">suixinday</span>
+                            </div>
                         </div>
                     </router-link>
                     <div class="layout-nav">
@@ -16,23 +18,23 @@
                             </Badge>
                             消息
                         </MenuItem>
-                        <MenuItem name="2">
-                            zrrrr
+                        <MenuItem name="2" v-if="getCurrentUser.name">
+                            {{getCurrentUser.name}}
                             <Icon type="person"></Icon>
                         </MenuItem>
-                        <router-link to="/login">
+                        <router-link to="/login" v-if="!getCurrentUser.name">
                             <MenuItem name="3">
                                 <Icon type="log-in"></Icon>
                                 登录
                             </MenuItem>
                         </router-link>
-                        <router-link to="/register">
+                        <router-link to="/register" v-if="!getCurrentUser.name">
                             <MenuItem name="4">
                                 <Icon type="ios-email"></Icon>
                                 注册
                             </MenuItem>
                         </router-link>
-                        <MenuItem name="5">
+                        <MenuItem name="5" @click="">
                             <Icon type="log-out"></Icon>
                             注销
                         </MenuItem>
@@ -57,19 +59,32 @@ export default {
   },
   data (){
       return {
-          select:''
+          select:'',
+          logoutInfo:false
       }
   },
   computed :{
       getCurrentState (){
           return this.$store.state.currentState
+      },
+      getCurrentUser (){
+           return this.$store.state.currentUser
+      },
+      logoutInfoState (){
+            return this.logoutInfo
       }
   },
-  created (){
+  mounted (){
   },
   methods :{
-      aaa(name){
-          alert(name)
+      logOut (){
+          this.logoutInfo =true;
+      },
+      OK (){
+           this.$store.dispatch("actionSetCurrentUser",{})
+      },
+      CANCEL (){
+          
       }
   },
   watch:{
@@ -92,17 +107,15 @@ export default {
     overflow: hidden;
 }
 .layout-logo{
-    width: 100px;
-    height: 30px;
-    background: #5b6270;
+    width: 130px;
+    height: 40px;
     border-radius: 3px;
     float: left;
     position: relative;
-    top: 15px;
+    top: 14px;
     left: 20px;
 }
 .layout-nav{
-    width: 475px;
     margin: 0 auto;
     float: right;
 }
@@ -112,5 +125,14 @@ export default {
         background: #eee;
         border-radius: 1px;
         display: inline-block;
-    }
+}
+.layout-logos{
+    width: 100px;
+    height: 30px;
+    border-radius: 3px;
+    float: left;
+    position: relative;
+    bottom:13px;
+    left: 14px;
+}
 </style>

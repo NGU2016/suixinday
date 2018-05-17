@@ -8,7 +8,8 @@ const state ={
     currentUser:'',
     currentState:'2',//右上角标签选中的状态,
     currentCityInfo:{},//某个城市的景点合集
-    currentStrategy:{}//城市的具体某个景点的具体游玩攻略和评论数据
+    currentStrategy:{},//城市的具体某个景点的具体游玩攻略和评论数据
+    currentUser:{}
 }
 
 const mutations={
@@ -23,15 +24,21 @@ const mutations={
     },
     setCurrentStrategy (state,data){ //城市的具体某个景点的具体游玩攻略和评论数据
         state.currentStrategy = data;
+    },
+    setCurrentUser (state,data){
+        state.currentUser=data
     }
 }
 
 const actions ={
-    actionsHostCity(context,data){
+    actionsHostCity(context,data){//context 当前的store对象
         context.commit('initHotCity',data)
     },
     actionsCurrentCityInfo(context,data){
         context.commit('setCurrentCityInfo',data)
+    },
+    actionSetCurrentUser (context,data){
+        context.commit('setCurrentUser',data)
     }
 }
 export default new Vuex.Store({

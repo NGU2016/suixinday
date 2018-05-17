@@ -23,26 +23,26 @@
     "img":"4.jpg"
   }],
 "second":[{
-    "cityName":"北京1",
-    "dis":"天安門",
+    "cityName":"杭州",
+    "dis":"杭州",
     "id":"5",
     "img":"5.jpg"
   },
   
-  {  "cityName":"上海1",
-    "dis":"東方明珠",
+  {  "cityName":"厦门",
+    "dis":"厦门",
     "id":"6",
     "img":"6.jpg"
   },
   {
-    "cityName":"廣州1",
-    "dis":"22222222222222",
+    "cityName":"苏州",
+    "dis":"苏州",
     "id":"7",
     "img":"7.jpg"
   },
   {
-    "cityName":"深圳1",
-    "dis":"44444444444444",
+    "cityName":"云南",
+    "dis":"云南",
     "id":"8",
     "img":"8.jpg"
   }]
